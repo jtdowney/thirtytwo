@@ -165,8 +165,8 @@ pub fn geohash_decode(input: String) -> Result(BitArray, Nil) {
 
 fn decode_with_padding(input: String, alphabet: String) -> Result(BitArray, Nil) {
   let decode_map = build_decode_map(alphabet, True)
-  use stripped <- result.try(validate_padding(input))
-  do_decode(stripped, decode_map)
+  validate_padding(input)
+  |> result.try(do_decode(_, decode_map))
 }
 
 fn build_crockford_decode_map() -> Dict(String, Int) {
