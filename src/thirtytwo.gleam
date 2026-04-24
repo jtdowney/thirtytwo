@@ -163,7 +163,10 @@ pub fn geohash_decode(input: String) -> Result(BitArray, Nil) {
   do_decode(input, decode_map)
 }
 
-fn decode_with_padding(input: String, alphabet: String) -> Result(BitArray, Nil) {
+fn decode_with_padding(
+  input: String,
+  alphabet: String,
+) -> Result(BitArray, Nil) {
   let decode_map = build_decode_map(alphabet, True)
   validate_padding(input)
   |> result.try(do_decode(_, decode_map))
